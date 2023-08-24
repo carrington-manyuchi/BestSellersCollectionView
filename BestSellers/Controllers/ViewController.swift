@@ -8,19 +8,25 @@
 import UIKit
 
 let screenWidth = UIScreen.main.bounds.size.width
-let screenHeight = UIScreen.main.bounds.height
+let screenHeight = UIScreen.main.bounds.size.height
 
 class ViewController: UIViewController {
     
     //MARK: - Properties
     private let collectionView: UICollectionView = {
+        
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.contentInsetAdjustmentBehavior = .never
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.showsVerticalScrollIndicator = false
-        collectionView.backgroundColor = UIColor.red
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        
+        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        layout.scrollDirection = .horizontal
+        layout.minimumLineSpacing = 10.0
+        layout.minimumInteritemSpacing = 10.0
+        
         return collectionView
     }()
         
@@ -39,6 +45,7 @@ extension  ViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
         view.addSubview(collectionView)
+        
         composeConstraints()
     }
     
@@ -56,16 +63,15 @@ extension  ViewController {
 //MARK: - UICollectionViewDataSource
 
 extension ViewController: UICollectionViewDataSource {
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 10
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
+        cell.contentView.backgroundColor = .red
+        return cell
     }
 }
 
