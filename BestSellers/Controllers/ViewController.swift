@@ -117,7 +117,7 @@ extension ViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         if indexPath.item == layout.currentPage {
-            print("didSelectItemAt")
+           // print("didSelectItemAt")
         } else {
 
             collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
@@ -125,12 +125,9 @@ extension ViewController: UICollectionViewDelegate {
             layout.previousOffset = layout.updateOffset(collectionView)
             setupCell()
         }
-        
-       
-        
-        
     }
 }
+
 
 //MARK: - UICollectionViewDelegateFlowLayout
 
@@ -144,7 +141,7 @@ extension ViewController: UICollectionViewDelegateFlowLayout{
 extension ViewController {
     
     func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
-        print("didEndscrolling")
+       // print("didEndscrolling")
     }
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
