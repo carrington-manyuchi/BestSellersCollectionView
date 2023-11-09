@@ -1,6 +1,6 @@
 # BestSellersCollectionView
 
-This is an ecommerce feature of best sellers slide. Once the image is focused it will zoom out.
+This is an ecommerce feature of best sellers which horizontally slides. Once the image is focused it will zoom out.
 The project was built using programmatic UIKit
 
 #Accomplishments
